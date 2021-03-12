@@ -5,7 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-    <button>Add Task</button>
+    <form action="{% url 'addTask' %}" method="post">
+        {% csrf_token %}
+        <h3>Add a new task</h3>
+        Task Name
+        <input name="taskName">
+        Task Description
+        <input name="taskDescription">
+        Task Priority
+        <input name="taskPriority">
+        <button name="AddButton" type="submit">Add Task</button>
+    </form>
+
+    <br/>
+    <h1>Todo List</h1>
     <table>
         <thead>
             <tr>
@@ -25,7 +38,9 @@
                 <td>{{ task.priority }}</td>
                 <td>{{ task.desc }}</td>
                 <td>{{ task.state }}</td>
-                <td><button>Action</button></td>
+                <td>
+                    <a href="{% url 'deleteTask' task.id %}">Delete</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
