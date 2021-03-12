@@ -5,6 +5,27 @@
     <title>Title</title>
 </head>
 <body>
-hello from todoAppDB
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>State</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>1</td>
+                <td>{{ task }}</td>
+                <td>dsa</td>
+                <td>0</td>
+                <td><button>Action</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
