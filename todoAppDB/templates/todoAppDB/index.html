@@ -5,11 +5,13 @@
     <title>Title</title>
 </head>
 <body>
+    <button>Add Task</button>
     <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Priority</th>
                 <th>Description</th>
                 <th>State</th>
                 <th>Actions</th>
@@ -18,10 +20,11 @@
         <tbody>
             {% for task in tasks %}
             <tr>
-                <td>1</td>
-                <td>{{ task }}</td>
-                <td>dsa</td>
-                <td>0</td>
+                <td>{{ task.id }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.priority }}</td>
+                <td>{{ task.desc }}</td>
+                <td>{{ task.state }}</td>
                 <td><button>Action</button></td>
             </tr>
             {% endfor %}
