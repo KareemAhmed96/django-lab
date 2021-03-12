@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', include("myApp.urls")),
     path('todo/', include("todoApp.urls")),
+    path('todoDB/', include("todoAppDB.urls")),
 ]
