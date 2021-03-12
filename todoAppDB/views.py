@@ -34,3 +34,30 @@ def deleteTask(request, id):
     task.delete()
 
     return redirect("index")
+
+
+def updateTask(request, id):
+    task = Task.objects.get(pk=id)
+
+    if request.method == "POST":
+        name = request.POST.get("name")
+        desc = request.POST.get("desc")
+        priority = request.POST.get("priority")
+
+        task.name = name
+        task.desc = desc
+        task.priority = priority
+
+        task.save()
+
+        return redirect("index")
+
+
+def doneTask(request, id):
+    task = Task.objects.get(pk=id)
+
+    task.state = 1
+
+    task.save()
+
+    return redirect("index")

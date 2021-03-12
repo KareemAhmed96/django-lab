@@ -24,24 +24,29 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Priority</th>
                 <th>Description</th>
+                <th>Priority</th>
                 <th>State</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for task in tasks %}
+            <form action="{% url 'updateTask' task.id %}" method="post">
+            {% csrf_token %}
             <tr>
                 <td>{{ task.id }}</td>
-                <td>{{ task.name }}</td>
-                <td>{{ task.priority }}</td>
-                <td>{{ task.desc }}</td>
+                <td><input name="name" value={{ task.name }}></td>
+                <td><input name="desc" value={{ task.desc }}></td>
+                <td><input name="priority" value={{ task.priority }}></td>
                 <td>{{ task.state }}</td>
                 <td>
-                    <a href="{% url 'deleteTask' task.id %}">Delete</a>
+                    <button><a href="{% url 'doneTask' task.id %}" style="text-decoration:none">Done</a></button>
+                    <button><a href="{% url 'deleteTask' task.id %}" style="text-decoration:none">Delete</a></button>
+                    <button name= UpdateButton type="submit">Update</button>
                 </td>
             </tr>
+            </form>
             {% endfor %}
         </tbody>
     </table>
